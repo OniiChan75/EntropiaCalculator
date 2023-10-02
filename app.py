@@ -7,26 +7,30 @@ with open("test.txt", "r") as file:
 #calculation of letters
 conteggio_lettere = {}
 conteggio_carattere = {}
+lunghezza_testo = len(testo)
 
 #counting cycle
 for carattere in testo:
     if carattere.isalpha():
         if carattere in conteggio_lettere:
-            conteggio_lettere[carattere] += 1
+            conteggio_lettere[carattere]['conteggio'] += 1
         else:
-            conteggio_lettere[carattere] = 1
+            conteggio_lettere[carattere] = {'conteggio':1, 'percentuale':0}
     else:
         if carattere in conteggio_lettere:
-            conteggio_carattere[carattere] += 1
+            conteggio_carattere[carattere]['conteggio'] += 1
         else:
-            conteggio_carattere[carattere] = 1
+            conteggio_carattere[carattere] = {'conteggio': 1, 'percentuale': 0}
             
 #I combine the two dictionaries
 conteggio_completo = {**conteggio_lettere, **conteggio_carattere}
 
+for lettera, info in conteggio_completo.items():
+    info['percentuale'] = (info['conteggio'] / lunghezza_testo) * 100
+
 #sort the dictionary
-conteggio_completo_ordinato = dict(sorted(conteggio_completo.items(), key=lambda x: x[1], reverse=True))
+conteggio_completo_ordinato = dict(sorted(conteggio_completo.items(), key=lambda x: x[1]['percentuale'], reverse=True))
 
 #print the result as output
-for carattere, conteggio in conteggio_completo_ordinato.items():
-    print(f"'{carattere}': {conteggio}")
+for carattere, info in conteggio_completo_ordinato.items():
+    print(f"'{carattere}': Conteggio: {info['conteggio']}, Percentuale: {info['percentuale']:.2f}%")
