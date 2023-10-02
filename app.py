@@ -2,36 +2,36 @@
 
 #open file and read text(text)
 with open("test.txt", "r") as file:
-    testo = file.read()
+    text = file.read()
     
 #calculation of letters
-conteggio_lettere = {}
-conteggio_carattere = {}
-lunghezza_testo = len(testo)
+letter_count = {}
+character_count = {}
+text_length = len(text)
 
 #counting cycle
-for carattere in testo:
-    if carattere.isalpha():
-        if carattere in conteggio_lettere:
-            conteggio_lettere[carattere]['conteggio'] += 1
+for letter in text:
+    if letter.isalpha():
+        if letter in letter_count:
+            letter_count[letter]['count'] += 1
         else:
-            conteggio_lettere[carattere] = {'conteggio':1, 'percentuale':0}
+            letter_count[letter] = {'count':1, 'percentage':0}
     else:
-        if carattere in conteggio_lettere:
-            conteggio_carattere[carattere]['conteggio'] += 1
+        if letter in letter_count:
+            character_count[letter]['count'] += 1
         else:
-            conteggio_carattere[carattere] = {'conteggio': 1, 'percentuale': 0}
+            character_count[letter] = {'count': 1, 'percentage': 0}
             
 #I combine the two dictionaries
-conteggio_completo = {**conteggio_lettere, **conteggio_carattere}
+count_complete = {**letter_count, **character_count}
 
 #calculation of the percentage
-for lettera, info in conteggio_completo.items():
-    info['percentuale'] = (info['conteggio'] / lunghezza_testo) * 100
+for lettera, info in count_complete.items():
+    info['percentage'] = (info['count'] / text_length) * 100
 
 #sort the dictionary
-conteggio_completo_ordinato = dict(sorted(conteggio_completo.items(), key=lambda x: x[1]['percentuale'], reverse=True))
+count_complete_sorted = dict(sorted(count_complete.items(), key=lambda x: x[1]['percentage'], reverse=True))
 
 #print the result as output
-for carattere, info in conteggio_completo_ordinato.items():
-    print(f"'{carattere}': Conteggio: {info['conteggio']}, Percentuale: {info['percentuale']:.2f}%")
+for letter, info in count_complete_sorted.items():
+    print(f"'{letter}': count: {info['count']}, percentage: {info['percentage']:.2f}%")
