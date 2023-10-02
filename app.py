@@ -25,6 +25,7 @@ for carattere in testo:
 #I combine the two dictionaries
 conteggio_completo = {**conteggio_lettere, **conteggio_carattere}
 
+#calculation of the percentage
 for lettera, info in conteggio_completo.items():
     info['percentuale'] = (info['conteggio'] / lunghezza_testo) * 100
 
