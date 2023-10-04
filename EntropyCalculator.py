@@ -1,7 +1,8 @@
 #entropy calculator taking text from a text(file)
+import sys
 
 #open file and read text(text)
-with open("test.txt", "r") as file:
+with open("texts/"+sys.argv[1], "r") as file:
     text = file.read()
     
 #calculation of letters
