@@ -11,10 +11,20 @@ EntropyCalculator is a simple Python program that allows you to calculate how ma
 ## Usage
 1. Make sure you have Python installed on your computer.
 2. Download the `EntropyCalculator.py` file.
-3. Run the program but first insert the text into the text.txt file.
+3. Run the program by providing the text directly as a command-line argument.
 
-program created by Gabriele Meles.
+## User Tips
+1. Use quotes (") around the text if it contains spaces or special characters.
+2. Ensure that the `EntropyCalculator.py` file is in the same folder where you run the command.
 
-Example usage:
+## Developer
+This program was created by Gabriele Meles.
+
+Here's an example of usage:
+
 ```bash
-python EntropyCalculator.py
+python EntropyCalculator.py "This is the text to analyze"
+
+
+
+
